@@ -19,9 +19,9 @@ git -C 04_code/P4P-Besu checkout main
 git -C 04_code/P4P-Besu pull
 ```
 
-### Updated READMEs (`P4P-Besu-docs/`)
+### Updated READMEs (`Code-Doc/`)
 
-`P4P-Besu-docs/` holds rewritten READMEs for the source repository that are not yet on its `main` branch:
+`Code-Doc/` holds rewritten READMEs for the source repository that are not yet on its `main` branch:
 - `README.md`: the repository's root README (stack, layout, basic 4-validator setup)
 - `frontend/README.md`: the voter and administrator web app
 - `voting-contract/README.md`: the contract, its tests and deployment
@@ -37,8 +37,8 @@ bash build-compendium.sh <upiA> <upiB>
 ```
 
 The script:
-1. Copies the compendium documents into a staging folder, without the `P4P-Besu/` clone, `P4P-Besu-docs/`, the build script, `.git`, `.gitignore`, any `_TODO.md` files and any built zips.
-2. Exports the clone's committed files with `git archive HEAD` into `04_code/P4P-Besu/` in the staging folder, then copies `P4P-Besu-docs/` over it.
+1. Copies the compendium documents into a staging folder, without the `P4P-Besu/` clone, `Code-Doc/`, the build script, `.git`, `.gitignore`, any `_TODO.md` files and any built zips.
+2. Exports the clone's committed files with `git archive HEAD` into `04_code/P4P-Besu/` in the staging folder, then copies `Code-Doc/` over it.
 3. Fills in the UPIs and the clone's commit hash in the main `README.md`.
 4. Checks for open TODOs, empty folders, unfilled placeholders, a `.git` folder in the snapshot, private keys and the 2 GB limit.
 5. Writes `68_<upiA>_<upiB>-compendium.zip` in the repository root (ignored by git).

@@ -2,7 +2,7 @@
 
 Assessing the Suitability of Blockchain Frameworks for New Zealand General Elections
 
-Author: Eason Chang
+Authors: Eason Chang and Patrick Sheng
 
 ## About these notes
 
@@ -58,6 +58,12 @@ After the supervisors suggested not limiting the research to MACI (meeting of 22
 - What it covers: Current enrolment figures (3,677,600 enrolled as at 30 September 2026).
 - Key takeaway: A national voter population of about 3.7 million, used for the worst-case load (about 100 votes per second if everyone voted in one ten-hour day) and for storage estimates.
 
+
+### Electoral Commission, "2023 General Election: Voter turnout statistics"
+- Link: https://elections.nz/democracy-in-nz/historical-events/2023-general-election/voter-turnout-statistics
+- What it covers: Enrolment and turnout figures for the 2023 election.
+- Key takeaway: About 3.7 million enrolled voters, used for a worst-case load in which every enrolled voter votes online during election-day hours.
+
 ### M. Loncke and J. Dumortier, "Online voting: A legal perspective" (2004)
 - Link: https://doi.org/10.1080/13600860410001674742
 - What it covers: Legal principles for online voting.
@@ -72,6 +78,12 @@ After the supervisors suggested not limiting the research to MACI (meeting of 22
 - Link: https://thepolicyobservatory.aut.ac.nz/__data/assets/pdf_file/0006/233088/A-working-paper-on-internet-voting-in-New-Zealand-December-2018.pdf
 - What it covers: New Zealand's history with online voting, including the cancelled 2016 local body trial.
 - Key takeaway: The 2016 trial was cancelled over time, cost and security concerns. The underlying problem is trust in whoever runs the servers.
+
+
+### Department of Internal Affairs, "Online voting"
+- Link: https://www.dia.govt.nz/online-voting
+- What it covers: The New Zealand government's position on online voting, including the cancelled 2016 local elections trial and the proposed 2019 trial that was not taken forward.
+- Key takeaway: Security concerns raised by the NZSIS and GCSB are a large part of why online voting has not been trialled. Anyone who controls or breaks into a central voting server could change the result.
 
 ### Manatū Taonga, Ministry for Culture and Heritage, "Early elections" (2014)
 - Link: https://nzhistory.govt.nz/politics/election-day/early-elections
@@ -91,6 +103,12 @@ After the supervisors suggested not limiting the research to MACI (meeting of 22
 - Link: https://www.valimised.ee/en/archive/statistics
 - What it covers: Historical Estonian internet voting statistics.
 - Key takeaway: Internet voting has been offered in Estonia since 2005.
+
+
+### State Electoral Office of Estonia, "Statistics about internet voting in Estonia"
+- Link: https://www.valimised.ee/en/archive/statistics-about-internet-voting-estonia
+- What it covers: Internet voting figures for each Estonian election.
+- Key takeaway: More than half of all votes in the 2023 parliamentary election were cast online.
 
 ### P. Ehin, M. Solvak, J. Willemson, and P. Vinkel, "Internet voting in Estonia 2005–2019: Evidence from eleven elections" (2022)
 - Link: https://doi.org/10.1016/j.giq.2022.101718
@@ -116,6 +134,17 @@ After the supervisors suggested not limiting the research to MACI (meeting of 22
 - Link: https://doi.org/10.1007/978-3-319-68687-5_8
 - What it covers: The 2017 Western Australian election's use of a third-party DDoS protection service and what that means for trust.
 - Key takeaway: Availability risk is larger for an online system than for paper.
+
+
+### B. Adida, "Helios: Web-based open-audit voting" (2008)
+- Link: Proc. 17th USENIX Security Symposium, pp. 335–348
+- What it covers: A web-based voting system in which voters can check their vote was recorded and anyone can check the count.
+- Key takeaway: Cryptographic voting systems give strong verifiability, but they rely on one election server to collect and publish votes. Its operator could still drop votes or take the election offline.
+
+### J. Benaloh, M. Naehrig, O. Pereira, and D. S. Wallach, "ElectionGuard: A cryptographic toolkit to enable verifiable elections" (2024)
+- Link: Proc. 33rd USENIX Security Symposium
+- What it covers: A toolkit for adding end-to-end verifiability to existing election systems.
+- Key takeaway: Same limitation as Helios: verifiable counting, but a single operator still controls collection and availability. This is the gap a shared ledger run by several organisations aims to close.
 
 ---
 
@@ -189,10 +218,26 @@ Read in Semester One, when the project aimed to optimise MACI. Set aside once th
 
 ## 6. Consensus and Byzantine fault tolerance
 
+### L. Lamport, R. Shostak, and M. Pease, "The Byzantine generals problem" (1982)
+- Link: https://doi.org/10.1145/357172.357176
+- What it covers: The original definition of Byzantine faults, where a node may lie or send different messages to different nodes, as opposed to simply crashing.
+- Key takeaway: Reliable agreement despite f Byzantine nodes needs at least 3f + 1 nodes in total.
+
 ### M. Castro and B. Liskov, "Practical Byzantine fault tolerance" (1999)
 - Link: Proc. 3rd Symp. Operating Syst. Design Implementation (OSDI), pp. 173–186
 - What it covers: The PBFT protocol.
 - Key takeaway: The 3f + 1 rule, the 2f + 1 quorum, and why message traffic grows with the square of the number of nodes.
+
+
+### D. Ongaro and J. Ousterhout, "In search of an understandable consensus algorithm" (2014)
+- Link: Proc. USENIX Annual Technical Conference, pp. 305–319
+- What it covers: The Raft consensus algorithm for replicated databases.
+- Key takeaway: A database copied across several organisations with a crash-tolerant protocol such as Raft keeps running if some copies fail, but it assumes every copy is honest. One dishonest operator could still change records, which is why Byzantine fault tolerance is needed.
+
+### H. Moniz, "The Istanbul BFT consensus algorithm" (2020)
+- Link: https://arxiv.org/abs/2002.03613
+- What it covers: A corrected and formally proven description of Istanbul BFT (IBFT), which adapts PBFT for blockchains.
+- Key takeaway: Together with Saltini and Hyland-Wood, it means the safety and liveness of the IBFT family have been formally analysed, one reason for choosing IBFT 2.0.
 
 ### G. Wood, "Proof-of-Authority: Ethereum consensus" (2015)
 - What it covers: Proof of authority, where known validators take turns sealing blocks.
@@ -205,6 +250,12 @@ Read in Semester One, when the project aimed to optimise MACI. Set aside once th
 ### Y. Zhang, X. Wang, and J. Li, "BW-PBFT: Practical Byzantine fault tolerance consensus algorithm based on credit bidirectionally waning" (2023)
 - What it covers: The scaling cost of PBFT's all-to-all messaging and a proposed variant.
 - Key takeaway: PBFT slows down as validators are added, so the number of validators is a trade-off between fault tolerance and speed.
+
+
+### J. Seo, D. Ko, S. Kim, and S. Park, "A coordination technique for improving scalability of Byzantine fault-tolerant consensus" (2020)
+- Link: https://doi.org/10.3390/app10217609
+- What it covers: Why BFT consensus slows down as nodes are added, and a technique to reduce the coordination cost.
+- Key takeaway: Message traffic between validators is the reason BFT protocols lose performance at larger network sizes.
 
 ### R. Saltini and D. Hyland-Wood, "IBFT 2.0: A safe and live variation of the IBFT blockchain consensus protocol for eventually synchronous networks" (2019)
 - Link: https://arxiv.org/abs/1909.10194
@@ -249,6 +300,17 @@ Read in Semester One, when the project aimed to optimise MACI. Set aside once th
 - Link: https://doi.org/10.1007/978-3-031-28694-0_26
 - What it covers: Caliper benchmarks of a Besu IBFT 2.0 network run by several organisations at different sites.
 - Key takeaway: The closest existing study to this project's setup. Also gives Caliper's definition of transaction latency.
+
+
+### ConsenSys, "GoQuorum documentation"
+- Link: https://docs.goquorum.consensys.io
+- What it covers: GoQuorum, another Ethereum client for private, permissioned networks.
+- Key takeaway: Like Besu, it runs Solidity smart contracts and supports BFT consensus protocols including IBFT 2.0, so it is the closest alternative to Besu.
+
+### Hyperledger Foundation, "Hyperledger Caliper documentation"
+- Link: https://hyperledger-caliper.github.io/caliper/
+- What it covers: A benchmarking tool for blockchain platforms.
+- Key takeaway: Caliper was used in the 2025 MACI work, so using it here keeps the comparison fair. Its standard Ethereum connector sends every transaction from one account, so a custom connector was needed to send votes from many voters.
 
 ### R.-V. Tkachuk, D. Ilie, R. Robert, V. Kebande, and K. Tutschku, "On the performance and scalability of consensus mechanisms in privacy-enabled decentralized renewable energy marketplace" (2024)
 - Link: https://doi.org/10.1007/s12243-023-00973-8

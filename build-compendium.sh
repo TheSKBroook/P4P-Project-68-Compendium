@@ -9,13 +9,13 @@
 #   04_code/README.md          Explains the code snapshot
 #   04_code/P4P-Besu/          A git clone of https://github.com/Patrick-Sheng/P4P-Besu
 #                              (not committed to the compendium repo; see .gitignore)
-#   04_code/P4P-Besu-docs/     Optional: updated READMEs copied over the snapshot
+#   04_code/Code-Doc/     Optional: updated READMEs copied over the snapshot
 #
 # What it does:
 #   1. Copies the compendium documents into a staging folder, leaving out the P4P-Besu clone,
-#      P4P-Besu-docs/, this script, .git, .gitignore, any _TODO.md files and any built zips.
+#      Code-Doc/, this script, .git, .gitignore, any _TODO.md files and any built zips.
 #   2. Exports the clone's committed files (git archive HEAD) into 04_code/P4P-Besu/, then
-#      copies P4P-Besu-docs/ over it. Only committed files are included, so the .git history,
+#      copies Code-Doc/ over it. Only committed files are included, so the .git history,
 #      gitignored keys, .env files and chain data stay out.
 #   3. Fills <UPI-A>, <UPI-B> and <COMMIT> in the README.
 #   4. Checks for leftover TODOs, empty folders, placeholders, private keys and the 2 GB limit.
@@ -32,7 +32,7 @@ UPI_B=$2
 COMP=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)   # the compendium repository root
 OUTDIR=$COMP
 CODE="$COMP/04_code/P4P-Besu"
-DOCS="$COMP/04_code/P4P-Besu-docs"
+DOCS="$COMP/04_code/Code-Doc"
 NAME="68_${UPI_A}_${UPI_B}-compendium"
 OUT_ZIP="$OUTDIR/$NAME.zip"
 STAGE=$(mktemp -d)
@@ -58,7 +58,7 @@ echo "Code snapshot: P4P-Besu branch $BRANCH, commit $COMMIT"
 mkdir -p "$ROOT"
 tar -C "$COMP" \
     --exclude='./04_code/P4P-Besu' \
-    --exclude='./04_code/P4P-Besu-docs' \
+    --exclude='./04_code/Code-Doc' \
     --exclude='./build-compendium.sh' \
     --exclude='./.git' \
     --exclude='./.gitignore' \
@@ -73,7 +73,7 @@ git -C "$CODE" archive --format=tar HEAD | tar -x -C "$ROOT/04_code/P4P-Besu"
 # updated READMEs not yet committed to the source repository
 if [ -d "$DOCS" ]; then
   cp -a "$DOCS/." "$ROOT/04_code/P4P-Besu/"
-  echo "Copied updated READMEs from 04_code/P4P-Besu-docs over the snapshot"
+  echo "Copied updated READMEs from 04_code/Code-Doc over the snapshot"
 fi
 # forge-std is a submodule and is not in git archive; note how to fetch it
 mkdir -p "$ROOT/04_code/P4P-Besu/voting-contract/lib"

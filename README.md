@@ -27,14 +27,17 @@ The two reports split the evaluation:
 | Report | Focus | Tests it draws on |
 |---|---|---|
 | **P. Sheng**, *Evaluating the Suitability of Blockchain Frameworks for New Zealand's General Election*: consensus and performance | Throughput, confirmation latency, network size, validator failures, voter attacks | Areas 1 to 4 (round 1), round 2 election-scale tests, round 3 validator-count tests |
-| **E. Chang**, *Assessing the Suitability of Blockchain Frameworks for New Zealand General Elections*: infrastructure and integrity | Network design, tally audit across validators, storage growth | Additional tests T0 to T3 |
+| **E. Chang**, *Assessing the Suitability of Blockchain Frameworks for New Zealand General Elections*: infrastructure and integrity | Network design, tally audit across validators, storage growth | Additional tests T0, T1 and T3 (T2 was run but is not in this report, as it overlaps the Sheng report) |
 
 ## 2. Folder structure
 
 ```
 68_<UPI-A>_<UPI-B>-compendium/
 ├── README.md                    This file
-├── 01_project-records/          Project brief, meeting notes and actions, journal
+├── 01_project-records/
+│   ├── meeting_notes.md         Weekly supervisor meetings, March to October 2026
+│   ├── literature_notes.md      Sources read during the project and what each contributed
+│   └── design-history.md        Designs, tests and decisions not described in the reports
 ├── 02_submissions/
 │   ├── patrick-sheng/           Every file Patrick submitted on Canvas
 │   └── eason-chang/             Every file Eason submitted on Canvas
@@ -59,7 +62,7 @@ The two reports split the evaluation:
 | Mid-Year Technical Report (24 Jul) | Individual | ✓ | |
 | Conference Presentation slides (25 Jul) | Joint | ✓ (shared copy) | |
 | Display Day Poster, `Poster_68.pdf` (9 Oct) | Joint | ✓ (shared copy) | |
-| Final Research Report (18 Oct) | Individual | `P4P Final Report - Patrick Sheng.pdf` | `P4P Final Report - Eason Chang.pdf` |
+| Final Research Report (18 Oct) | Individual | `P4P Final Report - Patrick Sheng.pdf` | `Eason Final Part IV Report.pdf` |
 
 ## 3. Source code (`04_code/P4P-Besu/`)
 
@@ -67,7 +70,7 @@ The two reports split the evaluation:
 > source repository, and it is not committed to the compendium repository (see `.gitignore`).
 > `build-compendium.sh` turns it into the snapshot: it exports the clone's committed files with
 > `git archive` into the zip, which leaves out the git history, gitignored files, `.env` files and
-> validator keys. It then copies the updated READMEs in `04_code/P4P-Besu-docs/` over the
+> validator keys. It then copies the updated READMEs in `04_code/Code-Doc/` over the
 > snapshot. Pull the clone before building, and run `bash build-compendium.sh <upiA> <upiB>`.
 > See `04_code/README.md` for the steps. In the submitted zip, this folder holds the snapshot
 > described below.
@@ -101,7 +104,7 @@ its outcome (including aborted and crashed runs, with the labelled cause), and o
 | `throughput-results/` | Area 4 load, spike and stress (scaled to n = 4) | `AREA4-RESULTS.md` | Sheng |
 | `r2-scalability/` | Round 2 validator ladder and idle CPU, n = 4 to 16 | `R2-AREA1-RESULTS.md` | Sheng |
 | `r2-soak/` | Round 2 election-scale chain: seeding 3.3M voters, 1M-vote soak, attacks, faults, full verification | `R2-ELECTION-SCALE-RESULTS.md` | Sheng |
-| `additional/` | T0 environment, T1 tally audit, T2 transaction-pool eviction, T3 storage growth | `ADDITIONAL-RESULTS.md` | Chang |
+| `additional/` | T0 environment, T1 tally audit, T2 transaction-pool eviction, T3 storage growth | `ADDITIONAL-RESULTS.md` | Chang (T0, T1, T3; T2 data kept but not reported) |
 | `round3-index.log` | Launch log for round 3 | | Sheng |
 
 ### 4.1 Files in each run folder
