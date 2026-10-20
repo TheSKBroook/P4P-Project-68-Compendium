@@ -1,0 +1,5 @@
+# Source repository clone, exported into the zip by build-compendium.sh
+**/04_code/P4P-Besu/
+
+# Built compendium zips
+*.zip

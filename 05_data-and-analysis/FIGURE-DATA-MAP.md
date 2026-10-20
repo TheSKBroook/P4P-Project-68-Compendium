@@ -29,10 +29,10 @@ sources in `03_design/`.
 | Item | Content | Data | Summary / write-up | Plot |
 |---|---|---|---|---|
 | Section 4.1 | Test environment | `additional/env.txt` | `ADDITIONAL-RESULTS.md`, "T0" | |
-| Section 5.1, Fig 7(a) | Recount time per validator, 10,000 votes, with and without a crash | `additional/T1-S1-n4-20261014-16*-run{1,2,3}/audit.csv`, `additional/T1-S2-n4-20261014-17*-run{1,2,3}/audit.csv`; combined in `additional/T1-audit-all.csv` | `ADDITIONAL-RESULTS.md`, "T1" | `<plot file>` |
-| Fig 7(b) | Recount time scaled to 3.7M and 5M votes | Derived from Fig 7(a) data by linear scaling | `ADDITIONAL-RESULTS.md`, "T1" | `<plot file>` |
+| Section 5.1, Fig 7(a) | Recount time per validator, 10,000 votes, with and without a crash | `additional/T1-S1-n4-20261014-16*-run{1,2,3}/audit.csv`, `additional/T1-S2-n4-20261014-17*-run{1,2,3}/audit.csv`; combined in `additional/T1-audit-all.csv` | `ADDITIONAL-RESULTS.md`, "T1" | `plots/Chang_Fig7_recount-time.png` |
+| Fig 7(b) | Recount time scaled to 3.7M and 5M votes | Derived from Fig 7(a) data by linear scaling | `ADDITIONAL-RESULTS.md`, "T1" | `plots/Chang_Fig7_recount-time.png` |
 | Section 5.1, crash scenario | Validator 4 catch-up time and block count during the 60 s outage | `additional/T1-S2-*/fault-events.csv`, `fault-script.log` | `ADDITIONAL-RESULTS.md`, "T1" | |
-| Fig 8 | Growth of one validator's data directory over the storage test | `additional/T3-n4-20261014-173048-run1/storage.csv` | `ADDITIONAL-RESULTS.md`, "T3" | `<plot file>` |
-| Fig 9(a), 9(b) | Storage by record type, measured (10,000 voters) and estimated (3.7M voters, 21 days) | `additional/T3-n4-20261014-173048-run1/storage-summary.csv`, `storage-summary.json`, produced by `../monitoring/storage-extrapolate.js` | `ADDITIONAL-RESULTS.md`, "T3" | `<plot file>` |
+| Fig 8 | Growth of one validator's data directory over the storage test | `additional/T3-n4-20261014-173048-run1/storage.csv` | `ADDITIONAL-RESULTS.md`, "T3" | `plots/Chang_Fig8_storage-growth.png` |
+| Fig 9(a), 9(b) | Storage by record type, measured (10,000 voters) and estimated (3.7M voters, 21 days) | `additional/T3-n4-20261014-173048-run1/storage-summary.csv`, `storage-summary.json`, produced by `../monitoring/storage-extrapolate.js` | `ADDITIONAL-RESULTS.md`, "T3" | `plots/Chang_Fig9_storage-by-record-type.png` |
 | Appendix A | Example block and receipt for one vote | `<raw JSON-RPC output, to be added>` | Report Appendix A | |
 | Table 1 | Suitability against the criteria of Section 2.1 | Summary of the results above and the companion report | Report Section 6 | |
