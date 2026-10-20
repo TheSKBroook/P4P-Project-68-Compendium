@@ -39,15 +39,17 @@ The two reports split the evaluation:
 │   ├── literature_notes.md      Sources read during the project and what each contributed
 │   └── design-history.md        Designs, tests and decisions not described in the reports
 ├── 02_submissions/
-│   ├── patrick-sheng/           Every file Patrick submitted on Canvas
-│   └── eason-chang/             Every file Eason submitted on Canvas
-├── 03_design/                   Architecture and process diagrams (Draw.io / Mermaid sources and exports)
+│   ├── patrick-sheng/           Patrick's final report as submitted on Canvas
+│   └── eason-chang/             Eason's final report as submitted on Canvas
+├── 03_design/
+│   ├── patrick-sheng/           Diagrams from the Sheng report (Figs 1 to 3)
+│   └── eason-chang/             Diagrams from the Chang report (Figs 1 to 6)
 ├── 04_code/
 │   ├── README.md                How the code snapshot is made
 │   └── P4P-Besu/                Snapshot of the source repository, exported by build-compendium.sh (see Section 3)
 ├── 05_data-and-analysis/
-│   ├── FIGURE-DATA-MAP.md       Every report figure and table mapped to its data and script
-│   └── plots/                   Scripts or spreadsheets that draw the report figures
+│   ├── FIGURE-DATA-MAP.md       Every report figure and table mapped to its data
+│   └── plots/                   The data figures from both reports (Sheng_ and Chang_ prefixes)
 ├── 06_environment/
 │   └── ENVIRONMENT.md           Test machine specification, software versions, network parameters
 └── 07_future-work/
@@ -56,13 +58,12 @@ The two reports split the evaluation:
 
 ### 2.1 Individual submissions (`02_submissions/`)
 
-| Submission | Type | Patrick Sheng | Eason Chang |
-|---|---|---|---|
-| Project Scope, Research Objectives and Literature Review (2 Apr) | Individual | ✓ | |
-| Mid-Year Technical Report (24 Jul) | Individual | ✓ | |
-| Conference Presentation slides (25 Jul) | Joint | ✓ (shared copy) | |
-| Display Day Poster, `Poster_68.pdf` (9 Oct) | Joint | ✓ (shared copy) | |
-| Final Research Report (18 Oct) | Individual | `P4P Final Report - Patrick Sheng.pdf` | `Eason Final Part IV Report.pdf` |
+Each student's final report, exactly as submitted on Canvas:
+
+| Student | File |
+|---|---|
+| Patrick Sheng | `patrick-sheng/P4P Final Report - Patrick Sheng.pdf` |
+| Eason Chang | `eason-chang/Eason Final Part IV Report.pdf` |
 
 ## 3. Source code (`04_code/P4P-Besu/`)
 

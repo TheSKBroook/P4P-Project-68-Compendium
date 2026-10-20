@@ -1,11 +1,11 @@
 # Figure and Table to Data Map
 
 Every figure and table in the two final reports that presents measured results, with the data it
-was drawn from. Paths are relative to `04_code/P4P-Besu/perf-testing/reports/`. The scripts or
-spreadsheets that draw each chart are in `../plots/`.
+was drawn from. Paths are relative to `04_code/P4P-Besu/perf-testing/reports/`. An image of each
+chart is in `plots/`, next to this file.
 
-Figures that are diagrams rather than data (Sheng Figs 1 to 3; Chang Figs 1 to 6) have their
-sources in `03_design/`.
+Figures that are diagrams rather than data (Sheng Figs 1 to 3; Chang Figs 1 to 6) are in
+`03_design/`.
 
 ## P. Sheng, *Evaluating the Suitability of Blockchain Frameworks for New Zealand's General Election*
 
